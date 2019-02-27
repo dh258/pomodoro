@@ -4,6 +4,9 @@ import TimerInput from "./timer/TimerInput";
 import TimerButton from "./buttons/TimerButton";
 
 class Timer extends React.Component {
+  // TODO: When reset without input, ocassionally returns a null
+  // minute variable. Need to fix.
+
   // Init default pomodoro, which is 25 minutes
   state = {
     minutes: "25",
@@ -13,7 +16,11 @@ class Timer extends React.Component {
   };
 
   handleChange = event => {
-    this.setState({ timerInput: event.target.value });
+    if (event.target.value != "") {
+      this.setState({ timerInput: event.target.value });
+    } else {
+      this.setState({ timerInput: "25" });
+    }
   };
 
   handleSubmit = event => {
@@ -25,7 +32,6 @@ class Timer extends React.Component {
     if (!this.state.isRunning) {
       this.interval = setInterval(this.tick, 1000);
       this.setState({ isRunning: true });
-      console.log(this.state.isRunning);
     }
   };
 
@@ -35,9 +41,12 @@ class Timer extends React.Component {
   };
 
   onReset = () => {
+    clearInterval(this.interval);
+    this.setState({ isRunning: false });
     if (this.state.timerInput !== "") {
       this.setValuesToState(this.state.timerInput, "0");
-      this.setState({ isRunning: false });
+    } else {
+      this.setValuesToState("25", "0");
     }
   };
 

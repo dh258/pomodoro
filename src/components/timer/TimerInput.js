@@ -9,6 +9,7 @@ class TimerInput extends React.Component {
           <label for="timer">Enter timer minute: </label>
           <input
             className="form-control"
+            placeholder="25"
             type="number"
             value={value}
             onChange={onChange}
