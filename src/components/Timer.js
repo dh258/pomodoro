@@ -16,7 +16,7 @@ class Timer extends React.Component {
   };
 
   handleChange = event => {
-    if (event.target.value != "") {
+    if (event.target.value !== "") {
       this.setState({ timerInput: event.target.value });
     } else {
       this.setState({ timerInput: "25" });
