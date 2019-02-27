@@ -2,12 +2,12 @@ import React from "react";
 
 class TimerInput extends React.Component {
   render() {
-    const { minutes, onChange } = this.props;
+    const { value, onChange, onSubmit } = this.props;
     return (
       <div>
-        <form>
-          <label>Enter custom timer</label>
-          <input type="number" value={minutes} onChange={onChange} />
+        <form onSubmit={onSubmit}>
+          <label>Enter timer minute: </label>
+          <input type="number" value={value} onChange={onChange} />
         </form>
       </div>
     );
