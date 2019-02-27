@@ -4,12 +4,16 @@ import Timer from "./Timer";
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <h3>Pomodoro Timer</h3>
-        <div>
-          <Timer />
+      <React.Fragment>
+        <div className="jumbotron text-center">
+          <h3>Pomodoro Timer</h3>
         </div>
-      </div>
+        <div className="container">
+          <div>
+            <Timer />
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

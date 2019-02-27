@@ -22,7 +22,11 @@ class Timer extends React.Component {
   };
 
   onStart = () => {
-    this.interval = setInterval(this.tick, 1000);
+    if (!this.state.isRunning) {
+      this.interval = setInterval(this.tick, 1000);
+      this.setState({ isRunning: true });
+      console.log(this.state.isRunning);
+    }
   };
 
   onStop = () => {
@@ -31,7 +35,10 @@ class Timer extends React.Component {
   };
 
   onReset = () => {
-    this.setValuesToState(this.state.timerInput, "0", false);
+    if (this.state.timerInput !== "") {
+      this.setValuesToState(this.state.timerInput, "0");
+      this.setState({ isRunning: false });
+    }
   };
 
   tick = () => {
@@ -48,16 +55,15 @@ class Timer extends React.Component {
     }
 
     // Set state with updated values
-    this.setValuesToState(min, sec, true);
+    this.setValuesToState(min, sec);
   };
 
-  setValuesToState(min, sec, start) {
+  setValuesToState(min, sec) {
     if (sec < 10) {
       this.setState({ seconds: "0" + sec, minutes: min });
     } else {
       this.setState({ seconds: sec, minutes: min });
     }
-    this.setState({ isRunning: start });
   }
 
   render() {
@@ -70,9 +76,11 @@ class Timer extends React.Component {
           value={timerInput}
         />
         <TimerDisplay seconds={seconds} minutes={minutes} />
-        <TimerButton onClick={this.onStart} text="Start" />
-        <TimerButton onClick={this.onStop} text="Pause" />
-        <TimerButton onClick={this.onReset} text="Reset" />
+        <div className="d-flex justify-content-center">
+          <TimerButton onClick={this.onStart} text="Start" />
+          <TimerButton onClick={this.onStop} text="Pause" />
+          <TimerButton onClick={this.onReset} text="Reset" />
+        </div>
       </div>
     );
   }

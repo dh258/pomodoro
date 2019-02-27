@@ -6,7 +6,7 @@ class TimerDisplay extends React.Component {
 
     return (
       <div>
-        <h2>
+        <h2 className="text-center">
           {minutes}:{seconds}
         </h2>
       </div>
