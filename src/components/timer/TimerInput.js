@@ -4,7 +4,7 @@ class TimerInput extends React.Component {
   render() {
     const { value, onChange, onSubmit } = this.props;
     return (
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center mt-4">
         <form onSubmit={onSubmit} className="form-group">
           <label for="timer">Enter timer minute: </label>
           <input

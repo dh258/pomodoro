@@ -5,7 +5,10 @@ class TimerButton extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <button className="btn btn-primary" onClick={this.props.onClick}>
+        <button
+          className={`btn ${this.props.color}`}
+          onClick={this.props.onClick}
+        >
           {this.props.text}
         </button>
       </React.Fragment>

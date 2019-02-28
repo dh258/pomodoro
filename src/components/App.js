@@ -1,17 +1,14 @@
 import React from "react";
 import Timer from "./Timer";
+import Navbar from "./Navbar";
 
 class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="jumbotron text-center">
-          <h3>Pomodoro Timer</h3>
-        </div>
+        <Navbar />
         <div className="container">
-          <div>
-            <Timer />
-          </div>
+          <Timer />
         </div>
       </React.Fragment>
     );

@@ -4,9 +4,6 @@ import TimerInput from "./timer/TimerInput";
 import TimerButton from "./buttons/TimerButton";
 
 class Timer extends React.Component {
-  // TODO: When reset without input, ocassionally returns a null
-  // minute variable. Need to fix.
-
   // Init default pomodoro, which is 25 minutes
   state = {
     minutes: "25",
@@ -86,9 +83,17 @@ class Timer extends React.Component {
         />
         <TimerDisplay seconds={seconds} minutes={minutes} />
         <div className="d-flex justify-content-center">
-          <TimerButton onClick={this.onStart} text="Start" />
-          <TimerButton onClick={this.onStop} text="Pause" />
-          <TimerButton onClick={this.onReset} text="Reset" />
+          <TimerButton
+            onClick={this.onStart}
+            color="btn-success"
+            text="Start"
+          />
+          <TimerButton onClick={this.onStop} color="btn-danger" text="Pause" />
+          <TimerButton
+            onClick={this.onReset}
+            color="btn-primary"
+            text="Reset"
+          />
         </div>
       </div>
     );
