@@ -1,20 +1,19 @@
 import React from "react";
+import NavbarItem from "./navbar/NavbarItem";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand">Pomodoro Timer</a>
-        {/* <div className="collapse navbar-collapse">
+      <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <Link to="/" className="navbar-brand">
+          Pomodoro Timer
+        </Link>
+        <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link">Settings</a>
-            </li>
+            <NavbarItem text="Settings" link="/settings" />
           </ul>
-        </div> */}
+        </div>
       </nav>
     </React.Fragment>
   );

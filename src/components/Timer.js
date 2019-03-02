@@ -51,17 +51,22 @@ class Timer extends React.Component {
     let min = Number(this.state.minutes);
     let sec = Number(this.state.seconds);
 
-    // Decrement seconds
-    sec--;
+    // Stop if it reaches 0:00
+    if (min === 0 && sec === 0) {
+      this.onStop();
+    } else {
+      // Decrement seconds
+      sec--;
 
-    // Decrement minutes if second below 0
-    if (sec < 0) {
-      min--;
-      sec = 59;
+      // Decrement minutes if second below 0
+      if (sec < 0) {
+        min--;
+        sec = 59;
+      }
+
+      // Set state with updated values
+      this.setValuesToState(min, sec);
     }
-
-    // Set state with updated values
-    this.setValuesToState(min, sec);
   };
 
   setValuesToState(min, sec) {

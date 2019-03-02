@@ -1,16 +1,21 @@
 import React from "react";
-import Timer from "./Timer";
+import Home from "./pages/Home";
+import Settings from "./pages/Settings";
 import Navbar from "./Navbar";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <Navbar />
-        <div className="container">
-          <Timer />
-        </div>
-      </React.Fragment>
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Navbar />
+            <Route path="/" exact component={Home} />
+            <Route path="/settings" exact component={Settings} />
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }
