@@ -1,4 +1,4 @@
-import { START, STOP, RESET, TICK } from "./actions/types";
+import { START, STOP, RESET, TICK, SET } from "../actions/types";
 
 const INIT = {
   minutes: "25",
@@ -12,20 +12,42 @@ const timerReducer = (state = INIT, action) => {
     case START:
       // isRunning true
       // Start ticking
-      break;
+      return {
+        ...state,
+        isRunning: true
+      };
+
     case STOP:
       // Stop ticking
       // isRunning false
-      break;
+      return {
+        ...state,
+        isRunning: false
+      };
+
     case RESET:
       // Stop ticking
       // isRunning false
       // Reset back to initial state
-      break;
+      return {
+        ...state,
+        isRunning: false,
+        minutes: this.state.timerInput
+      };
+
     case TICK:
-      // Tick clock 1 second
-      // can be implemented as default (?)
-      break;
+      return {
+        ...state,
+        minutes: action.minutes,
+        seconds: action.seconds
+      };
+
+    case SET:
+      return {
+        ...state,
+        timerInput: action.payload
+      };
+
     default:
       return state;
   }

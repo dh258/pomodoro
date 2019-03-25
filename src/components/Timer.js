@@ -2,6 +2,7 @@ import React from "react";
 import TimerDisplay from "./timer/TimerDisplay";
 import TimerInput from "./timer/TimerInput";
 import TimerButton from "./buttons/TimerButton";
+import { connect } from "react-redux";
 
 class Timer extends React.Component {
   // Init default pomodoro, which is 25 minutes
@@ -38,8 +39,7 @@ class Timer extends React.Component {
   };
 
   onReset = () => {
-    clearInterval(this.interval);
-    this.setState({ isRunning: false });
+    this.onStop();
     if (this.state.timerInput !== "") {
       this.setValuesToState(this.state.timerInput, "0");
     } else {
@@ -105,4 +105,4 @@ class Timer extends React.Component {
   }
 }
 
-export default Timer;
+export default connect()(Timer);
